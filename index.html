@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/pulse.css.css" />
+    <style>
+
+    </style>
+
+    <title>Inventario</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-primary d-flex align-items-stretch">
+      <h1 class="navbar-brand">
+        <i class="fas fa-feather-alt"></i> Almacenes el PEPE
+      </h1>
+      <span id="fecha" class="text-white navbar-text ml-auto"></span>
+    </nav>
+
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-12 d-flex">
+          <h5 class="p-2">Buenas tardes Erick Estrada Senado</h5>
+          <h5 id="cash" class="ml-auto p-2"></h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mx-auto d-flex col-12 flex-column ">
+      <div class="d-flex flex-row justify-content-around">
+        <p class="col-4">
+          <a
+            class="btn btn-lg btn-block btn-primary"
+            data-toggle="collapse"
+            href="#collapseProduct"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseProduct"
+            ><i class="fas fa-warehouse fa-1x"
+              ><span style="font-family: Verdana, Geneva, Tahoma, sans-serif"
+                class="d-none mt-sm-1 d-sm-block" >&nbsp;&nbsp;Inventario</span
+              ></i
+            >
+          </a>
+        </p>
+        <p class="col-4">
+          <a
+            class="btn btn-lg btn-block btn-danger"
+            data-toggle="collapse"
+            href="#collapseVentas"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseVentas "
+            ><i class="fas fa-cash-register fa-1x"
+              ><span style="font-family: Verdana, Geneva, Tahoma, sans-serif"
+                class="d-none mt-sm-1 d-sm-block">&nbsp;&nbsp;Ventas</span
+              ></i
+            >
+          </a>
+        </p>
+        <p class="col-4">
+          <a
+            class="btn btn-lg btn-block btn-success"
+            data-toggle="collapse"
+            href="#collapseCompras"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseCompras"
+            ><i class="fas fa-shopping-basket fa-1x "
+              ><span style="font-family: Verdana, Geneva, Tahoma, sans-serif"
+                class="d-none mt-sm-1 d-sm-block">&nbsp;&nbsp;Compras</span
+              ></i
+            >
+          </a>
+        </p>
+      </div>
+
+
+      <div class="collapse " id="collapseProduct">
+      
+          <div class="row">
+            <div class="col-12">
+ 
+              <table class="table table-sm  table-hover   w-100 d-block d-md-table " id="productTable">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Existencia (kg)</th>
+                    <th scope="col">Precio por (kg)</th>
+                    <th scope="col" colspan="2"></th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+
+              
+
+            </div>
+       
+          </div>
+        
+
+
+        <hr class="my-4" />
+
+        <button type="button" id="addProductBtn" class="btn btn-success">
+          <i class="far fa-plus-square"></i>&nbsp;&nbsp;Añadir productos
+        </button>
+
+        <form id="addProduct" class="py-3" style="display: none">
+          <h3 class="col-12 bg-warning py-2 text-white">Registro de producto</h3>
+          <div class="form-row">
+            <div class="class-group col-md-6 mt-3">
+              <label for="np_name" class="font-weight-bold">Nombre</label>
+              <input type="text" class="form-control" id="np_name" required />
+            </div>
+
+            <div class="class-group col-md-6 mt-3">
+              <label for="np_stored" class="font-weight-bold"
+                >Existencia kg</label
+              >
+              <input type="text" class="form-control" id="np_stored" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="class-group col-md-6 mt-3">
+              <label for="np_p_price" class="font-weight-bold"
+                >Precio a la compra por kilo</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="np_p_price"
+                required
+              />
+            </div>
+
+            <div class="class-group col-md-6 mt-3">
+              <label for="np_s_price" class="font-weight-bold"
+                >Precio a la venta por kilo</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="np_s_price"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row py-3">
+            <div class="col-lg-6">
+              <button
+                type="submit"
+                class="btn btn-lg mb-3 btn-block mx-auto btn-warning"
+              >
+                <i class="far fa-check-square"></i>&nbsp;&nbsp;Añadir
+              </button>
+            </div>
+            <div class="col-lg-6">
+              <button
+                type="button"
+                class="btn btn-lg btn-block mx-auto btn-danger"
+                id="cancelNewProd"
+              >
+                <i class="far fa-window-close"></i>&nbsp;&nbsp;Cancelar
+              </button>
+            </div>
+          </div>
+        </form>
+        <hr class="my-4" />
+        <div class="row" id="sellContanier"></div>
+        <div class="row" id="purchaseContanier"></div>
+      </div>
+
+
+      <div class="collapse " id="collapseVentas">
+        <div class="row">
+          <div class="col-12 ">
+            <table class="table table-responsive-sm table-hover " id="salesTable">
+              <thead class=" table-danger">
+                <tr >
+                  <th scope="col">Código producto</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Cantidad (kg)</th>
+                  <th scope="col">Total (MXN)</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="collapse " id="collapseCompras">
+        <div class="row">
+          <div class="col-12 table-responsive-sm">
+            <table class="table  table-responsive-sm table-hover " id="purchasesTable">
+              <thead class="table-success">
+                <tr>
+                  <th scope="col">Código producto</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Cantidad (kg)</th>
+                  <th scope="col">Precio Compra (MXN)</th>
+                  <th scope="col">Total (MXN)</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+    </div>
+  </body>
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+    crossorigin="anonymous"
+  ></script>
+
+  <script
+    src="https://kit.fontawesome.com/95dd4432e2.js"
+    crossorigin="anonymous"
+  ></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+  <script src="./database/index.js"></script>
+  <script src="./js/objetos.js"></script>
+  <script src="./js/index.js"></script>
+</html>
